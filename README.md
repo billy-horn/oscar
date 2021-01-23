@@ -1,3 +1,7 @@
+# IMPORTANT NOTE
+# THIS PROJECT IS CURRENTLY INCOMPLETE.
+# ALL PROPER SOURCES AND ACKNOWLEDGEMENTS WILL BE ADDED BY 01-27-2021 
+
 # OSCAR - the Ostensibly Smart Computer Aided Recycler
 
 ## DSI1019 Capstone Project by Billy Horn
@@ -56,4 +60,3 @@ Convolutional Neural Network (CNN) with TensorFlow, using accuracy, loss, and pr
 The data set from this project consists of over 2,500 total images separated into the five categories mentioned above. The images were collected and shared by [**Gary Thung**](https://github.com/garythung) and [**Mindy Yang**](https://github.com/yangmindy4) for their paper ( [**link**](http://cs229.stanford.edu/proj2016/poster/ThungYang-ClassificationOfTrashForRecyclabilityStatus-poster.pdf) ). More information on the data set and a download link can be found [**here**](https://github.com/garythung/trashnet#dataset).
 
 ## Findings and Conclusions
-
