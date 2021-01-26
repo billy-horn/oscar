@@ -1,62 +1,64 @@
-# IMPORTANT NOTE
-# THIS PROJECT IS CURRENTLY INCOMPLETE.
-# ALL PROPER SOURCES AND ACKNOWLEDGEMENTS WILL BE ADDED BY 01-27-2021 
-
-# OSCAR - the Ostensibly Smart Computer Aided Recycler
+# OSCAR
+#### The Ostensibly Smart Computer Aided Recycler
 
 ## DSI1019 Capstone Project by Billy Horn
 ---
+## Welcome!
 
+Hello and welcome to the OSCAR repo! OSCAR is an open-source project consisting of ML models, applications and websites to help combat recycling contamination. At its foundation, OSCAR is an image classifier pre-trained to categorize pictures of garbage. Please read further to find out more!
 
 <img src="./images/trash.jpg" alt="image" width="600"/>
 
 ## Problem Statement
 
-It is estimated in the city of San Diego, CA that at least 15% of refuse intended to be recycled by the general population is actually sent to the landfill [source]. Although 15% may not seem like a big number, this translates to nearly ##### tons of garbage per month and ### tons of garbage per year. That's the size of a ####! The saddest part is much is much of this content could have been recycled, but was simply thrown into the wrong bin - the large blue bins at everyone's home that is picked up by the city every two weeks. All of us are guilty of this, the *wishful* recycling that occurs when you think something can be recycled but you're not sure, so you throw it into the recycling bin and hope for the best. Well, what happens is employees at the city of San Diego separate these wishful contents and send them to the landfill as they do not have the resources to take the recylables to the appropriate facilities. For example, plastic bags, styrofoam peanuts and plastic wrapping are all items the city finds in the blue bins on the regular. The city of San Diego does not process plastic bags or wrappin, but directs the public to take them to their local grocery stores, where the stores usually have recycling bins set up. Again, the city does not process styrofoam packing peanuts and lists several places online where the public can go to recycle them. However, every two weeks the city deals with separting these items from the other recyclable contents.
+Recycling contamination occurs when items end up in a [single-streamed](https://en.wikipedia.org/wiki/Single-stream_recycling) recycling bin that cannot be processed by its destined facility. Aside from the typical garbage contaminants, other examples of recycling contamination include plastic bags, plastic film, electronics and plastic utensils, to name a few.
 
+Recycling contaminants can vary depending on region due to different municipality accommodations and product availability. In the city of San Diego, CA, it is estimated that 15 - 17% of collected recyclables are contaminants, which equates to 10,000 tons of trash annually ([source](https://www.voiceofsandiego.org/topics/news/the-city-sends-about-15-percent-of-the-recycling-it-collects-to-the-dump/)). The recycling facilities separate the items they cannot process and send them to the landfill, even if they could be recycled by a different facility. The strain on the recycling industry is real, threatening its viability due to increased processing costs and lower return on the recycled product.([source](https://mediaroom.wm.com/the-battle-against-recycling-contamination-is-everyones-battle/)).
 
-As I know most of the general public is too busy (or lazy, myself included) to look up what can be recycled in the blue bins and what cannot - and quite frankly the city websites do not make it easy - I have taken it upon myself to research a way that makes separating the refuse at home easier. This way the city is not burdened with it themselves, and it can free up resources to focus attention on other recycling efforts. The idea is to have an app on your phone or computer that can tell you if something can be recycled or not based on a photograph.
+ The Ostensibly Smart Computer Aided Recycler (OSCAR) project is offered as an aid to mitigate recycling contamination, aiming to cutoff improper sorting at the consumer. With the aid of a convolutional neural network trained on images of garbage, OSCAR will attempt to classify images into six categories:\
+*glass, metal, cardboard, paper, plastic, trash*\
+With a crowd-soured data set planned via the [`website`](#website) portion of this repo, the OSCAR project hopes to amass enough categorized images to predict if an item can be recycled or not (stretch goal).
 
-Welcome OSCAR - the Ostensibly Smart Computer Aided Recycler. Inspired by the grumpy, yet adorable Oscar the Grouch, it is a machine learning program that uses computer vision to classify garabge from a picture into five different categories:
-- Trash
-- Plastic
-- Metal
-- Paper
-- Cardboard
-- Glass
-
-This project represents the MVP - Minimum Viable Product - of a full-fledged recycling sorting app. Although categorizing into these five classes doesn't tell you if the item can be recycled or not, it proves there is a viable opportunity for a recycling app provided there is enough data (pictures) from which the machine can learn.
+OSCAR can been deployed to portable iOS devices using the demo app found in the [`app`](#app) section of this repo.
 
 ## Table of Contents
-- Software Requirements
-- Methods of Analysis
-- Data
-- Website
-- App
-- Findings and Conclusions
+- [Software Requirements](#software-requirements)
+- [Methods of Analysis](#methods-of-analysis)
+- [Data](#data)
+- [Website](#website)
+- [App](#app)
+- [Findings and Conclusions](findings-conclusions)
 
 ## Software Requirements
+    - jupyter notebooks:
+        • tensorflow
+        • numpy
+        • matplotlib
+        • PIL
+    - application
+        • XCode
+        
+## Methods of Analysis 
 
-- tensorflow
-- numpy
-- matplotlib
-- PIL
+OSCAR is built on a Convolutional Neural Network (CNN) with TensorFlow, using accuracy, loss, and precision as metrics.
+
+## Data
+### Do to the size of the data set, it has not been included in this repo. Please follow the link below for downloading.
+
+The data set from this project consists of over 2,500 total images separated into the five categories mentioned above. The images were collected and shared by [**Gary Thung**](https://github.com/garythung) and [**Mindy Yang**](https://github.com/yangmindy4) for their paper ( [**link**](http://cs229.stanford.edu/proj2016/poster/ThungYang-ClassificationOfTrashForRecyclabilityStatus-poster.pdf) ). More information on the data set and a download link can be found [**here**](https://github.com/garythung/trashnet#dataset).
 
 ## Website
 
-This will be a section that talks about the website - where it is, why it exists (collect data) and how to use it.
+The website is intended as a crowd-sourcing tool to build a robust data set of images. Users can post images of recyclables or trash, and then vote on images to help classify them manually. Most of the code for the website is included, however I've omitted secret keys for security reasons, and omitted the tensorflow models due to space constraints.
+
+If you wish to test the website, you would need to create unique secret keys, and export the tensorflow model from the `notebooks` section of this repo. Please reach out for more information.
+
+The website was built by augmenting the excellent django tutorial by Corey Schafer. Code may be identical or similar to code found in this tutorial ([source](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)).
+
 
 ## App
 
-This is a section that will discuss the application on iOS - why it exists, how it works under the hood.
-
-## Methods of Analysis
-
-Convolutional Neural Network (CNN) with TensorFlow, using accuracy, loss, and precision as metrics.
-
-## Data
-### Do to the size of the data set, it has not been included in this repo. Please follow link below for downloading.
-
-The data set from this project consists of over 2,500 total images separated into the five categories mentioned above. The images were collected and shared by [**Gary Thung**](https://github.com/garythung) and [**Mindy Yang**](https://github.com/yangmindy4) for their paper ( [**link**](http://cs229.stanford.edu/proj2016/poster/ThungYang-ClassificationOfTrashForRecyclabilityStatus-poster.pdf) ). More information on the data set and a download link can be found [**here**](https://github.com/garythung/trashnet#dataset).
+The app is for iOS devices only and can be accessed through demo mode in XCode. Open the XCode project in the `app` section of this repo, select the operating system you would like to test (through iOS14), and select `run`.
+All code for the application was taken from the Apple CoreML image classifier tutorial ([source](https://developer.apple.com/documentation/vision/classifying_images_with_vision_and_core_ml)).
 
 ## Findings and Conclusions
