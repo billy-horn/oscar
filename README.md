@@ -37,8 +37,8 @@ OSCAR can been deployed to portable iOS devices using the demo app found in the 
         • PIL
     - application
         • XCode
-        
-## Methods of Analysis 
+
+## Methods of Analysis
 
 OSCAR is built on a Convolutional Neural Network (CNN) with TensorFlow, using accuracy, loss, and precision as metrics.
 
