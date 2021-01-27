@@ -7,7 +7,9 @@
 
 Hello and welcome to the OSCAR repo! OSCAR is an open-source project consisting of ML models, applications and websites to help combat recycling contamination. At its foundation, OSCAR is an image classifier pre-trained to categorize pictures of garbage. Please read further to find out more!
 
+<p align="center">
 <img src="./images/trash.jpg" alt="image" width="600"/>
+</p>
 
 ## Problem Statement
 
