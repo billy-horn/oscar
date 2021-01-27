@@ -27,7 +27,7 @@ OSCAR can been deployed to portable iOS devices using the demo app found in the 
 - [Data](#data)
 - [Website](#website)
 - [App](#app)
-- [Findings and Conclusions](findings-and-conclusions)
+- [Findings and Conclusions](#findings-and-conclusions)
 
 ## Software Requirements
     - jupyter notebooks:
