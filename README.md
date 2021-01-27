@@ -35,6 +35,7 @@ OSCAR can been deployed to portable iOS devices using the demo app found in the 
         • numpy
         • matplotlib
         • PIL
+        • pandas
     - application
         • XCode
         • CreateML
