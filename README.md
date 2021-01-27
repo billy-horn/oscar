@@ -37,13 +37,15 @@ OSCAR can been deployed to portable iOS devices using the demo app found in the 
         • PIL
     - application
         • XCode
+        • CreateML
+
 
 ## Methods of Analysis
 
-OSCAR is built on a Convolutional Neural Network (CNN) with TensorFlow, using accuracy, loss, and precision as metrics.
+The OSCAR model is built with a Convolutional Neural Network. Two models constructed with TensorFlow can be found within the Jupyter Notebooks of the [`notebooks`](./notebooks) section of this repo. A model using CreateML can be found within the [`app`](./app) section of this repo. The models are assessed using the accuracy and precision metrics. Accuracy is used to determine how well the model is performing on all categories, and precision is used to determine how well each class is performing. Accuracy and precision were chosen as metrics because the true positives and true negatives are important for OSCAR's use as they can tell you what can and cannot be recycled.  
 
 ## Data
-### Do to the size of the data set, it has not been included in this repo. Please follow the link below for downloading.
+### Due to the size of the data set, it has not been included in this repo. Please follow the link below for downloading.
 
 The data set from this project consists of over 2,500 total images separated into the five categories mentioned above. The images were collected and shared by [**Gary Thung**](https://github.com/garythung) and [**Mindy Yang**](https://github.com/yangmindy4) for their paper ( [**link**](http://cs229.stanford.edu/proj2016/poster/ThungYang-ClassificationOfTrashForRecyclabilityStatus-poster.pdf) ). More information on the data set and a download link can be found [**here**](https://github.com/garythung/trashnet#dataset).
 
@@ -62,3 +64,36 @@ The app is for iOS devices only and can be accessed through demo mode in XCode. 
 All code for the application was taken from the Apple CoreML image classifier tutorial ([source](https://developer.apple.com/documentation/vision/classifying_images_with_vision_and_core_ml)).
 
 ## Findings and Conclusions
+
+The model chosen to be OSCAR's deployable model was the CreateML model because it had the highest testing accuracy with minimal overfitting. The testing accuracy of 90% far exceeded the baseline accuracy of any category. See tables of results below:
+
+|**Model**|**Train Accuracy**|**Test Accuracy**|
+|---|---|---|
+|Tensorflow|82.6%|78.5%|
+|CreateML|92.8%|89.9%|
+
+|**Class**|**Baseline Scores**|
+|---|---|
+|Cardboard|16%|
+|Glass|20%|
+|Metal|16%|
+|Paper|23.5%|
+|Plastic|19%|
+|Trash|5.4%|
+
+However, the CreateML model was not without its faults. Even though the testing accuracy was at 90%, the precision of the Trash class was exceptionally underperforming (see table below). I believe this is due to the imbalanced quantity of data for this category, combined with not enough data reserved for testing (I could not figure out how to change this option in CreateML, but will be added to my improvement to-dos).
+
+|**Class**|**Precision**|
+|---|---|
+|Cardboard|100%|
+|Glass|91%|
+|Metal|93%|
+|Paper|90%|
+|Plastic|84%|
+|Trash|25%|
+
+At 138 pictures, the Trash category consisted of a maximum of 25% of the other categories. For instance, the Glass category had 500+ images. With this imbalance, the model could not learn the images of trash as well as the other classes and underperformed in the category as a result.
+
+Even though this model performed well overall, it is apparent more images need to be collected for proper training. Hopefully with the crowd-sourcing effort of manually gathering data, OSCAR can one day be trained on 20,000+ images.
+
+Aside from gathering more data, the next steps for this project include implementing educational tags within the iOS application to help the end user become more aware of what can and cannot be recycled, researching ways to improve the TensorFlow model, and working with the local municipality to determine what can and cannot go into the single-streamed recycling bins so it can be incorporated into the app's functionality.
