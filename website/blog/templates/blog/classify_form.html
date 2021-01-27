@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags  %}
+{% block content %}
+    <!-- <form method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Save">
+    </form> -->
+	<div class="content-section">
+		<form method="POST" enctype="multipart/form-data">	
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Image Classifier</legend>
+				<p>Upload an image of garbage to be classified by OSCAR</p>
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit" name="filePath">Classify {{ max_score }}</button>
+			</div>
+		</form>
+	</div>
+{% endblock content %}

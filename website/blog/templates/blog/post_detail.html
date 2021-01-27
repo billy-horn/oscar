@@ -1,0 +1,143 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<article class="media content-section">
+	  <img class="rounded-circle article-img" src=" {{ object.author.profile.image.url }}">
+	  <div class="media-body">
+	    <div class="article-metadata">
+	      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ object.author }}</a>
+	      <small class="text-muted">{{ object.date_posted|date:"M d, Y" }}</small>
+	      {% if object.author == user %}
+	      	<div>
+	      	  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+	      	  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+	      	</div>
+	      {% endif %}
+	    </div>
+	    <h2 class="article-title" >{{ object.title }}</h2>
+	    <!-- <img class="rounded article-img" src=" {{post.author.profile.image.url }}"> -->
+	    <!-- <img src="{{ post.author.profile.image.url }}" 
+             class="img-responsive" alt="Responsive image" 
+             width="307" height="240" /> -->
+
+        <!-- https://stackoverflow.com/questions/42569261/how-to-show-an-image-as-pop-up-using-bootstrap -->
+
+        <!-- This is a working picture popup!!! -->
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+	          <a href="#" class="pop" data-toggle="modal" data-target="#myModal">
+			    <img src={{ post.image.url }} style="width: 400px; height: 264px;" >
+			      <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+				    <div class="modal-dialog">
+				      <div class="modal-content">
+				        <div class="modal-body">
+				          <img src={{ post.image.url }} class="img-responsive" width="400" height="264">
+				        </div>
+				      </div>
+				    </div>
+			    </div>
+			  </a>
+		    </div>
+		    <div class="col-sm">
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">Glass</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">Plastic</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">Metal</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">Paper</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">Cardboard</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off">Trash</button>
+				{% for event in latest_events_list %}
+					<tr>
+					    <td>
+					    	<input type="button" name="event" id="event.id"
+					         value="{{ event.id }}" />
+					    </td>
+						<td>{{ event.date }}</td> 
+						<td>{{ event.time }}</td>
+
+					</tr>
+				{% endfor %}
+				<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Submit Vote</a>
+<!-- 
+
+
+
+		    	<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+				  <label class="form-check-label" for="exampleRadios1">
+				    Plastic
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Paper
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Cardboard
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Metal
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Glass
+				  </label>
+				</div>
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Trash
+				  </label>
+				</div>
+				<div>
+	      	      <a class="btn btn-outline-primary btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Submit Vote</a>
+	      	    </div> -->
+
+
+		      <!-- <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+			  <label class="btn btn-outline-primary btn-block" for="btn-check-outlined">Single </label><br>
+			  <input type="checkbox" class="btn-check" id="btn-check-outlined-2" autocomplete="off">
+			  <label class="btn btn-outline-primary btn-block" for="btn-check-outlined-2">Single toggle test</label><br>
+			  <input type="checkbox" class="btn-check" id="btn-check-outlined-3" autocomplete="off">
+			  <label class="btn btn-outline-primary btn-block" for="btn-check-outlined-3">Single toggle</label><br>
+			  <input type="checkbox" class="btn-check" id="btn-check-outlined-4" autocomplete="off">
+			  <label class="btn btn-outline-primary btn-block" for="btn-check-outlined-4">Single toggle</label><br>
+			  <input type="checkbox" class="btn-check" id="btn-check-outlined-5" autocomplete="off">
+			  <label class="btn btn-outline-primary btn-block" for="btn-check-outlined-5">Single toggle</label><br>
+		    </div>
+		  </div>
+		  <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary">Left</button>
+  <button type="button" class="btn btn-primary">Middle</button>
+  <button type="button" class="btn btn-primary">Right</button>
+</div> -->
+		</div>
+
+
+
+
+
+   <!--      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Popup image</button>
+
+		<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		        <div class="modal-body">
+		            <img src="//placehold.it/1000x600" class="img-responsive" width="307" height="240">
+		        </div>
+		    </div>
+		  </div>
+		</div> -->
+        <!-- https://stackoverflow.com/questions/22540550/bootstrap-image-popup -->
+	    <!-- <p class="article-content">{{ object.content }}</p> -->
+	  </div>
+	</article>
+{% endblock content %}

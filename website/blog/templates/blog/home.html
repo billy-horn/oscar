@@ -1,0 +1,75 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	{% for post in posts %}
+		<article class="media content-section">
+		  <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+		      <small class="text-muted">{{ post.date_posted|date:"M d, Y" }}</small>
+		    </div>
+		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+		    <!-- <img class="rounded-circle article-img" src=" {{post.author.profile.image.url }}"> -->
+		    <!-- <p class="article-content">{{ post.image.url }}</p> -->
+		    <div class="container">
+          <div class="row">
+            <div class="col-sm">
+	          <a href="#" class="pop" data-toggle="modal" data-target="#myModal">
+			    <img src={{ post.image.url }} style="width: 400px; height: 264px;" >
+			      <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+				    <div class="modal-dialog">
+				      <div class="modal-content">
+				        <div class="modal-body">
+				          <img src={{ post.image.url }} class="img-responsive" width="400" height="264">
+				        </div>
+				      </div>
+				    </div>
+			    </div>
+			  </a>
+		    </div>
+		    <div class="col-sm">
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" name="glassb">Glass</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" name="plasticb">Plastic</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" name="metalb">Metal</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" name="paperb">Paper</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" name="cardboardb">Cardboard</button>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" name="trash">Trash</button>
+				<!-- {% for event in latest_events_list %}
+					<tr>
+					    <td>
+					    	<input type="button" name="event" id="event.id"
+					         value="{{ event.id }}" />
+					    </td>
+						<td>{{ event.date }}</td> 
+						<td>{{ event.time }}</td>
+
+					</tr>
+				{% endfor %} -->
+				<a class="btn btn-outline-success btn-sm btn-block mt-1 mb-1" href="{% url 'blog-home' %}" type="submit" value="Vote">Submit Vote</a>
+		    <!-- <div>
+		    	<img class="rounded responsive" src="{{ post.image.url }}">
+		    </div> -->
+		  </div>
+		</article>
+	{% endfor %}
+	{% if is_paginated %}
+	  {% if page_obj.has_previous %}
+	    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+	    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_numer }}">Previous</a>
+	  {% endif %}
+
+	  {% for num in page_obj.paginator.page_range %}
+	    {% if page_obj.number == num %}
+	      <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+	    {% elif num > page_obj.number|add:"-3" and num < page_obj.number|add:"3"%}
+	      <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+	    {% endif %}
+	  {% endfor %}
+
+	  {% if page_obj.has_next %}
+	    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_numbrer }}">Next</a>
+	    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+	  {% endif %}
+
+	{% endif %}
+{% endblock content %}

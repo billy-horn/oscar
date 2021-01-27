@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+	<article class="media content-section">
+	  <div class="media-body">
+	  	<h2>Classification:</h2>
+	  	<img class="rounded" src="{{ object.image.url }}">
+	  	<h3> Category: {{ max_class }}</h3>
+	  	<h3> Confidence: {{ max_score }}%</h3>
+	  	<h3> Max Score is: {{ image_url }}</h3>
+	  </div>
+	</article>
+{% endblock content %}
