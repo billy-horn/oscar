@@ -5,7 +5,7 @@
 ---
 ## Welcome!
 
-Hello and welcome to the OSCAR repo! OSCAR is an open-source project consisting of ML models, applications and websites to help combat recycling contamination. At its foundation, OSCAR is an image classifier pre-trained to categorize pictures of garbage. Please read further to find out more!
+Hello and welcome to the OSCAR repo! OSCAR is an open-source project consisting of source code for ML models, applications and websites to help combat recycling contamination. At its foundation, OSCAR is an image classifier pre-trained to categorize pictures of garbage. Please read further to find out more!
 
 <p align="center">
 <img src="./images/trash.jpg" alt="image" width="600"/>
@@ -58,7 +58,7 @@ The website is intended as a crowd-sourcing tool to build a robust data set of i
 
 If you wish to test the website, you would need to create unique secret keys, and export the tensorflow model from the `notebooks` section of this repo. Please reach out for more information.
 
-The website was built by augmenting the excellent django tutorial by Corey Schafer. Code may be identical or similar to code found in this tutorial ([source](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)).
+The website was built by following the excellent django tutorial by Corey Schafer. Code may be identical or similar to code found in this tutorial ([source](https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g)).
 
 
 ## App
