@@ -1,7 +1,5 @@
 # OSCAR
 #### The Ostensibly Smart Computer Aided Recycler
-
-## DSI1019 Capstone Project by Billy Horn
 ---
 ## Welcome!
 
